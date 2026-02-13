@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Healing & Acupuncture Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2d5f4d;
+            --secondary-gold: #c9a961;
+            --light-green: #7fa892;
+            --cream: #faf8f5;
+            --warm-beige: #f5f1ea;
+            --text-dark: #2c2c2c;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            background: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 248, 245, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-green);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--warm-beige) 0%, var(--cream) 100%);
+            padding: 8rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(127, 168, 146, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, -30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(45, 95, 77, 0.2);
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201, 169, 97, 0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--primary-green);
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-green), var(--secondary-gold));
+            margin: 1rem auto 3rem;
+            border-radius: 10px;
+        }
+
+        /* About Section */
+        #about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            line-height: 1.9;
+        }
+
+        .about-features {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--warm-beige);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--secondary-gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(45, 95, 77, 0.15);
+            border-color: var(--light-green);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Appointment Section */
+        #appointment {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #3d7060 100%);
+            color: white;
+            border-radius: 30px;
+            margin: 4rem 5%;
+            padding: 5rem 4rem;
+        }
+
+        #appointment .section-title,
+        #appointment .section-subtitle {
+            color: white;
+        }
+
+        .appointment-form {
+            max-width: 700px;
+            margin: 3rem auto 0;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border-radius: 10px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-gold);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--secondary-gold);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .submit-button:hover {
+            background: white;
+            color: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Blog Section */
+        #blog {
+            background: white;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: var(--warm-beige);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--light-green) 0%, var(--primary-green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-date {
+            color: var(--secondary-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-card h3 {
+            font-size: 1.6rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .blog-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 1rem;
+            color: var(--secondary-gold);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--warm-beige);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--warm-beige);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--secondary-gold);
+            margin-top: 0.2rem;
+        }
+
+        .info-text h4 {
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            margin-bottom: 0.3rem;
+        }
+
+        .info-text p {
+            color: var(--text-light);
+        }
+
+        .insurance-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+        }
+
+        .insurance-form h3 {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .insurance-form p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .insurance-form .form-group input,
+        .insurance-form .form-group textarea,
+        .insurance-form .form-group select {
+            background: var(--warm-beige);
+            border: 2px solid var(--warm-beige);
+            color: var(--text-dark);
+        }
+
+        .insurance-form .form-group input::placeholder,
+        .insurance-form .form-group textarea::placeholder {
+            color: var(--text-light);
+        }
+
+        .insurance-form .form-group input:focus,
+        .insurance-form .form-group textarea:focus,
+        .insurance-form .form-group select:focus {
+            border-color: var(--light-green);
+            background: white;
+        }
+
+        .insurance-form .submit-button {
+            background: var(--primary-green);
+        }
+
+        .insurance-form .submit-button:hover {
+            background: var(--secondary-gold);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-green);
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        footer p {
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            #appointment {
+                padding: 3rem 2rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        section {
+            animation: fadeIn 0.8s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🌿 Natural Healing</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#appointment">Appointment</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Healing Through Nature</h1>
+            <p>Experience holistic wellness with our blend of traditional acupuncture and natural healing therapies. Your journey to better health begins here.</p>
+            <a href="#appointment" class="cta-button">Book Your Appointment</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">A family-centered approach to natural healing and wellness</p>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p>Welcome to our Natural Healing & Acupuncture Clinic, where ancient wisdom meets modern wellness. For over 15 years, we've been dedicated to helping families achieve optimal health through natural, time-tested healing methods.</p>
+                
+                <p>Our clinic offers a warm, welcoming environment where you and your loved ones can experience the profound benefits of holistic medicine. We believe in treating the whole person—body, mind, and spirit—not just the symptoms.</p>
+                
+                <p>Led by certified practitioners with extensive training in traditional Chinese medicine and natural healing modalities, our team is committed to providing personalized care that honors your unique healing journey.</p>
+            </div>
+            
+            <div class="about-features">
+                <div class="feature-card">
+                    <h3>🌱 Natural Approach</h3>
+                    <p>We use only natural, non-invasive healing methods that work with your body's innate wisdom.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>👨‍👩‍👧‍👦 Family-Centered</h3>
+                    <p>We welcome patients of all ages and create a comfortable, family-friendly atmosphere.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>✨ Personalized Care</h3>
+                    <p>Every treatment plan is customized to your specific needs and health goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Comprehensive natural healing solutions for your wellness journey</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🌸</div>
+                <h3>Acupuncture</h3>
+                <p>Traditional Chinese acupuncture to restore balance, relieve pain, and promote natural healing throughout your body.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🍃</div>
+                <h3>Herbal Medicine</h3>
+                <p>Custom herbal formulations tailored to your specific health needs, using high-quality, natural ingredients.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">💆</div>
+                <h3>Cupping Therapy</h3>
+                <p>Ancient technique to improve circulation, reduce muscle tension, and accelerate the body's healing process.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🧘</div>
+                <h3>Wellness Counseling</h3>
+                <p>Holistic lifestyle guidance including nutrition, stress management, and natural wellness practices.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">⚖️</div>
+                <h3>Pain Management</h3>
+                <p>Natural, effective solutions for chronic pain, injuries, and musculoskeletal conditions.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🌙</div>
+                <h3>Stress Relief</h3>
+                <p>Therapeutic treatments to reduce anxiety, improve sleep quality, and restore emotional balance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="appointment">
+        <h2 class="section-title">Schedule an Appointment</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Take the first step towards natural healing</p>
+        
+        <form class="appointment-form" onsubmit="handleAppointment(event)">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+            </div>
+            
+            <div class="form-group">
+                <label for="service">Preferred Service *</label>
+                <select id="service" name="service" required>
+                    <option value="">Select a service</option>
+                    <option value="acupuncture">Acupuncture</option>
+                    <option value="herbal">Herbal Medicine</option>
+                    <option value="cupping">Cupping Therapy</option>
+                    <option value="wellness">Wellness Counseling</option>
+                    <option value="pain">Pain Management</option>
+                    <option value="stress">Stress Relief</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="date">
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Additional Information</label>
+                <textarea id="message" name="message" placeholder="Tell us about your health concerns or questions..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-button">REQUEST APPOINTMENT</button>
+        </form>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+        <h2 class="section-title">Health & Wellness Blog</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Tips and insights for natural living</p>
+        
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-image">🌿</div>
+                <div class="blog-content">
+                    <div class="blog-date">January 15, 2026</div>
+                    <h3>5 Benefits of Regular Acupuncture</h3>
+                    <p>Discover how regular acupuncture treatments can improve your overall health, reduce stress, and enhance your body's natural healing abilities.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-image">🍵</div>
+                <div class="blog-content">
+                    <div class="blog-date">January 8, 2026</div>
+                    <h3>Herbal Teas for Winter Wellness</h3>
+                    <p>Learn about powerful herbal teas that can boost your immune system and keep you healthy during the cold winter months.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-image">🧘‍♀️</div>
+                <div class="blog-content">
+                    <div class="blog-date">December 28, 2025</div>
+                    <h3>Managing Stress Naturally</h3>
+                    <p>Explore natural techniques and holistic practices to reduce stress and cultivate inner peace in your daily life.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">We're here to answer your questions</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Visit Us</h3>
+                
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <h4>Address</h4>
+                        <p>123 Wellness Avenue<br>Your City, ST 12345</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-text">
+                        <h4>Phone</h4>
+                        <p>(555) 123-4567</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">✉️</div>
+                    <div class="info-text">
+                        <h4>Email</h4>
+                        <p>info@naturalhealingclinic.com</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">🕒</div>
+                    <div class="info-text">
+                        <h4>Hours</h4>
+                        <p>Monday - Friday: 9:00 AM - 7:00 PM<br>
+                        Saturday: 10:00 AM - 5:00 PM<br>
+                        Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="insurance-form">
+                <h3>Insurance Verification</h3>
+                <p>Submit your insurance information and we'll verify your coverage within 24 hours.</p>
+                
+                <form onsubmit="handleInsurance(event)">
+                    <div class="form-group">
+                        <label for="patient-name">Patient Name *</label>
+                        <input type="text" id="patient-name" name="patient-name" required placeholder="Full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patient-email">Email *</label>
+                        <input type="email" id="patient-email" name="patient-email" required placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="insurance-provider">Insurance Provider *</label>
+                        <input type="text" id="insurance-provider" name="insurance-provider" required placeholder="e.g., Blue Cross, Aetna, United Healthcare">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="policy-number">Policy Number *</label>
+                        <input type="text" id="policy-number" name="policy-number" required placeholder="Your policy number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="group-number">Group Number</label>
+                        <input type="text" id="group-number" name="group-number" placeholder="If applicable">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dob">Date of Birth *</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" name="notes" placeholder="Any additional information..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">SUBMIT FOR VERIFICATION</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Natural Healing & Acupuncture Clinic. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">Embracing nature's wisdom for holistic wellness</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Handle appointment form submission
+        function handleAppointment(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // In production, this would send to your email service
+            // For now, we'll show a success message
+            alert('Thank you for your appointment request! We will contact you within 24 hours to confirm your appointment.');
+            
+            // Log data (in production, this would be sent to a server)
+            console.log('Appointment Data:', data);
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Handle insurance form submission
+        function handleInsurance(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // In production, this would send to your email service
+            alert('Thank you! We have received your insurance information. We will verify your coverage and contact you within 24 hours.');
+            
+            // Log data (in production, this would be sent to a server)
+            console.log('Insurance Data:', data);
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Add scroll animation to sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
