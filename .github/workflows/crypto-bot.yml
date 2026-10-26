@@ -1,0 +1,82 @@
+name: crypto-bot
+
+# 매일: 데이터 갱신 → 오늘의 신호 → 모의매매.  매주 일요일(또는 코드 변경 시): 재학습.
+on:
+  schedule:
+    - cron: "15 0 * * *"   # 매일 00:15 UTC (= 일봉 마감 직후, 캘리포니아 오후 5:15/4:15)
+  push:
+    branches: [claude/stock-trading-automation-system-6spbe2]
+    paths:
+      - "crypto_bot/**"
+      - ".github/workflows/crypto-bot.yml"
+      - "!crypto_bot/data/**"
+      - "!crypto_bot/reports/**"
+      - "!crypto_bot/state/active_strategy.json"
+      - "!crypto_bot/state/signal.json"
+      - "!crypto_bot/state/paper_ledger.json"
+  workflow_dispatch:
+    inputs:
+      force_learn:
+        description: "재학습 강제 실행"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: crypto-bot-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: crypto_bot/requirements.txt
+
+      - run: pip install -r crypto_bot/requirements.txt
+
+      - name: 엔진 테스트
+        run: python -m pytest crypto_bot/tests -q
+
+      - name: 재학습 여부 결정
+        id: decide
+        run: |
+          learn=false
+          if [ "${{ github.event_name }}" = "push" ] && \
+             git diff --name-only "${{ github.event.before }}" HEAD 2>/dev/null | grep -qE '^crypto_bot/(bot/|config\.json)'; then
+            learn=true
+          fi
+          if [ "${{ inputs.force_learn }}" = "true" ]; then learn=true; fi
+          if [ "$(date -u +%u)" = "7" ]; then learn=true; fi
+          if [ ! -f crypto_bot/state/active_strategy.json ]; then learn=true; fi
+          echo "learn=$learn" >> "$GITHUB_OUTPUT"
+
+      - name: 학습 (워크포워드 백테스트 → 전략 선택)
+        if: steps.decide.outputs.learn == 'true'
+        run: python crypto_bot/run.py learn
+
+      - name: 오늘의 신호 + 모의매매
+        run: python crypto_bot/run.py paper
+
+      - name: 결과 커밋
+        run: |
+          git config user.name "crypto-bot"
+          git config user.email "crypto-bot@users.noreply.github.com"
+          git add crypto_bot/data crypto_bot/state crypto_bot/reports
+          if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
+          git commit -m "crypto-bot: $(date -u +%Y-%m-%d) signal${{ steps.decide.outputs.learn == 'true' && ' + learn' || '' }}"
+          for i in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep 5
+          done
+          exit 1
