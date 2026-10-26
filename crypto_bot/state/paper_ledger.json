@@ -1,0 +1,16 @@
+{
+  "budget": 10000,
+  "cash": 10000,
+  "peak_value": 10000,
+  "halted": false,
+  "created_at": "2026-10-26T07:52:30+00:00",
+  "history": [
+    {
+      "time": "2026-10-26T07:52:30+00:00",
+      "fills": [],
+      "value_after": 10000,
+      "bar_time": "2026-10-25 00:00:00+00:00"
+    }
+  ],
+  "holdings": {}
+}

@@ -1,0 +1,3 @@
+time,symbol,chosen,score,oos_cagr,oos_max_drawdown,kept_previous
+2026-10-26T07:52:29+00:00,BTC-USD,bollinger_revert,0.246,0.0224,0.1513,False
+2026-10-26T07:52:29+00:00,ETH-USD,donchian_breakout,1.2742,0.1445,0.2597,False

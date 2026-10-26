@@ -1,0 +1,123 @@
+{
+  "updated_at": "2026-10-26T07:52:29+00:00",
+  "symbols": {
+    "BTC-USD": {
+      "name": "bollinger_revert",
+      "kind": "single",
+      "members": [
+        {
+          "strategy": "bollinger_revert",
+          "params": {
+            "n": 20,
+            "k": 2.0
+          }
+        }
+      ],
+      "score": 0.24600184479727888,
+      "kept_previous": false,
+      "reason": "워크포워드 검증(OOS) 점수 1위",
+      "oos_metrics": {
+        "total_return": 0.17450479903375182,
+        "cagr": 0.022358918729585398,
+        "max_drawdown": 0.151310520325173,
+        "ulcer_index": 0.09088923194055949,
+        "martin": 0.24600184479727888,
+        "calmar": 0.14776843461733588,
+        "sharpe": 0.30963161422914715,
+        "sortino": 0.06315310225921227,
+        "worst_day": -0.11248064841061452,
+        "worst_month": -0.14619686640980678,
+        "days": 2655,
+        "time_in_market": 0.022975517890772127,
+        "trades": 10
+      },
+      "baseline_metrics": {
+        "total_return": 6.393819744068305,
+        "cagr": 0.3165853384366297,
+        "max_drawdown": 0.7667059828725817,
+        "ulcer_index": 0.3792224758844286,
+        "martin": 0.834827465588068,
+        "calmar": 0.4129162227878986,
+        "sharpe": 0.7628961557884621,
+        "sortino": 1.0393706527202424,
+        "worst_day": -0.3881242874509483,
+        "worst_month": -0.37120599797697296,
+        "days": 2655,
+        "time_in_market": 1.0,
+        "trades": 1
+      }
+    },
+    "ETH-USD": {
+      "name": "donchian_breakout",
+      "kind": "single",
+      "members": [
+        {
+          "strategy": "donchian_breakout",
+          "params": {
+            "entry_n": 55,
+            "exit_n": 20
+          }
+        }
+      ],
+      "score": 1.274172535601684,
+      "kept_previous": false,
+      "reason": "워크포워드 검증(OOS) 점수 1위",
+      "oos_metrics": {
+        "total_return": 1.6694615082214486,
+        "cagr": 0.1445195500252574,
+        "max_drawdown": 0.25971758870700545,
+        "ulcer_index": 0.11342227680100878,
+        "martin": 1.274172535601684,
+        "calmar": 0.556448836387026,
+        "sharpe": 0.7361687977859115,
+        "sortino": 0.6477992602436281,
+        "worst_day": -0.09053874551156173,
+        "worst_month": -0.11010129900875887,
+        "days": 2655,
+        "time_in_market": 0.2990583804143126,
+        "trades": 23
+      },
+      "baseline_metrics": {
+        "total_return": 9.103492595977913,
+        "cagr": 0.37433051439383735,
+        "max_drawdown": 0.7935036056443403,
+        "ulcer_index": 0.45014518617770505,
+        "martin": 0.8315772908122623,
+        "calmar": 0.4717439362986558,
+        "sharpe": 0.802882684265286,
+        "sortino": 1.1161831839011103,
+        "worst_day": -0.4332254252093932,
+        "worst_month": -0.4485800710093323,
+        "days": 2655,
+        "time_in_market": 1.0,
+        "trades": 1
+      }
+    }
+  },
+  "portfolio_oos": {
+    "total_return": 0.8548593636755477,
+    "cagr": 0.08864540672087906,
+    "max_drawdown": 0.13983061341585834,
+    "ulcer_index": 0.05501460982160426,
+    "martin": 1.6113066512391763,
+    "calmar": 0.6339484935051117,
+    "sharpe": 0.7891662515149112,
+    "sortino": 0.6864559860737593,
+    "worst_day": -0.05624032420530726,
+    "worst_month": -0.07424689865271672,
+    "days": 2655
+  },
+  "portfolio_buy_and_hold": {
+    "total_return": 9.389526255570589,
+    "cagr": 0.3796152418594705,
+    "max_drawdown": 0.7629741780699881,
+    "ulcer_index": 0.39417306197299823,
+    "martin": 0.9630674403759103,
+    "calmar": 0.49754664413380467,
+    "sharpe": 0.8223355332861203,
+    "sortino": 1.1040462703960423,
+    "worst_day": -0.41067485633017076,
+    "worst_month": -0.40975928897776726,
+    "days": 2655
+  }
+}
