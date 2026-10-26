@@ -91,7 +91,7 @@ def update(symbol: str, timeframe: str = "1d", history_start: str = "2017-01-01"
     else:
         merged = cached
 
-    merged = drop_unfinished(merged, timeframe, now)
+    merged = drop_unfinished(merged[COLUMNS].astype(float), timeframe, now)
     merged.index.name = "time"
     merged.to_csv(cache_path(symbol, timeframe))
     return merged

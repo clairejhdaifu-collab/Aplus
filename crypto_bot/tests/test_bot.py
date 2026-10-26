@@ -103,3 +103,15 @@ def test_full_exit_and_kill_switch():
     assert plan["halted"]
     assert {o["symbol"] for o in plan["orders"]} == {"BTC-USD", "ETH-USD"}
     assert all(o["side"] == "sell" and "quantity" in o for o in plan["orders"])
+
+
+def test_data_update_from_empty_cache(tmp_path, monkeypatch):
+    """빈 캐시 + 새 데이터 병합 후에도 숫자형이어야 한다 (지표 계산 가능)."""
+    from bot import data as data_mod
+    monkeypatch.setattr(data_mod, "DATA_DIR", tmp_path)
+    monkeypatch.setattr(data_mod, "_fetch_coinbase", lambda *a, **k: synthetic(300).iloc[:, :5])
+    df = data_mod.update("AAA-USD", "1d", "2018-01-01")
+    assert all(dt.kind == "f" for dt in df.dtypes)
+    assert np.isfinite(bt.ind.realized_vol(df["close"]).dropna()).all()
+    again = data_mod.load_cached("AAA-USD", "1d")
+    assert len(again) == len(df)
