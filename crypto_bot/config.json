@@ -33,11 +33,11 @@
 
   "robinhood": {
     "account_nickname": "MCP",
-    "budget_usd": 200,
+    "budget_usd": 10,
     "symbols_allowed": ["BTC-USD", "ETH-USD"]
   },
 
   "live": {
-    "max_order_usd": 200
+    "max_order_usd": 10
   }
 }

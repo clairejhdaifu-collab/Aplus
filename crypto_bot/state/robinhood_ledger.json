@@ -1,7 +1,7 @@
 {
-  "budget": 200,
-  "cash": 200,
-  "peak_value": 200,
+  "budget": 10,
+  "cash": 10,
+  "peak_value": 10,
   "halted": false,
   "created_at": "2026-10-26T07:55:13+00:00",
   "history": []
