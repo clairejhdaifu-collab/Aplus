@@ -39,21 +39,24 @@ def apply_risk(df: pd.DataFrame, raw_signal: pd.Series, risk: RiskParams) -> pd.
 
     1) 변동성 타깃: 시장이 거칠수록 비중을 줄인다 (target_vol / 최근 변동성).
     2) ATR 트레일링 스톱: 보유 중 최고 종가에서 ATR×배수 만큼 빠지면 즉시 현금화,
-       전략 신호가 한 번 꺼졌다가 다시 켜져야 재진입.
+       전략 신호가 한 번 꺼졌다가 다시 켜지거나 20일 신고가를 돌파해야 재진입.
     3) 작은 비중 변화(min_rebalance_fraction 미만)는 무시 → 쓸데없는 수수료 방지.
     """
     close = df["close"].to_numpy()
     sig = raw_signal.reindex(df.index).fillna(0).to_numpy()
     vol = ind.realized_vol(df["close"], 30, PERIODS_PER_YEAR).to_numpy()
     a = ind.atr(df, 14).to_numpy()
+    _, hi20 = ind.donchian(df, 20)
+    breakout = (df["close"] > hi20).to_numpy()
 
     out = np.zeros(len(df))
     pos = 0.0
     peak = np.nan
     stopped = False
     for i in range(len(df)):
+        if sig[i] <= 0 or breakout[i]:
+            stopped = False  # 신호가 꺼졌다 켜지거나, 20일 신고가로 추세가 되살아나면 재진입 허용
         if sig[i] <= 0:
-            stopped = False
             target = 0.0
         elif stopped:
             target = 0.0

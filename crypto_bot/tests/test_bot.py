@@ -115,3 +115,11 @@ def test_data_update_from_empty_cache(tmp_path, monkeypatch):
     assert np.isfinite(bt.ind.realized_vol(df["close"]).dropna()).all()
     again = data_mod.load_cached("AAA-USD", "1d")
     assert len(again) == len(df)
+
+
+def test_always_on_signal_reenters_after_stop():
+    """항상 켜진 신호도 스톱 이후 추세가 살아나면 다시 들어가야 한다."""
+    df = synthetic(seed=3)
+    exp = bt.apply_risk(df, st.buy_and_hold(df), bt.RiskParams())
+    stops = ((exp.shift(1) > 0) & (exp == 0)).sum()
+    assert stops > 0 and (exp.iloc[-500:] > 0).mean() > 0.2
