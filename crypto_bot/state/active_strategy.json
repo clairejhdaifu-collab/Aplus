@@ -1,35 +1,35 @@
 {
-  "updated_at": "2026-10-26T07:52:29+00:00",
+  "updated_at": "2026-10-26T07:53:45+00:00",
   "symbols": {
     "BTC-USD": {
-      "name": "bollinger_revert",
+      "name": "ema_cross",
       "kind": "single",
       "members": [
         {
-          "strategy": "bollinger_revert",
+          "strategy": "ema_cross",
           "params": {
-            "n": 20,
-            "k": 2.0
+            "fast": 21,
+            "slow": 150
           }
         }
       ],
-      "score": 0.24600184479727888,
+      "score": 0.971465055569313,
       "kept_previous": false,
       "reason": "워크포워드 검증(OOS) 점수 1위",
       "oos_metrics": {
-        "total_return": 0.17450479903375182,
-        "cagr": 0.022358918729585398,
-        "max_drawdown": 0.151310520325173,
-        "ulcer_index": 0.09088923194055949,
-        "martin": 0.24600184479727888,
-        "calmar": 0.14776843461733588,
-        "sharpe": 0.30963161422914715,
-        "sortino": 0.06315310225921227,
-        "worst_day": -0.11248064841061452,
-        "worst_month": -0.14619686640980678,
+        "total_return": 2.147776776999636,
+        "cagr": 0.1707490571688497,
+        "max_drawdown": 0.34671691152107964,
+        "ulcer_index": 0.1757644870394074,
+        "martin": 0.971465055569313,
+        "calmar": 0.4924739794772558,
+        "sharpe": 0.7621087319614701,
+        "sortino": 0.7844221222714938,
+        "worst_day": -0.09921776250650094,
+        "worst_month": -0.12351284664569029,
         "days": 2655,
-        "time_in_market": 0.022975517890772127,
-        "trades": 10
+        "time_in_market": 0.4233521657250471,
+        "trades": 28
       },
       "baseline_metrics": {
         "total_return": 6.393819744068305,
@@ -59,23 +59,23 @@
           }
         }
       ],
-      "score": 1.274172535601684,
+      "score": 1.4236428718614675,
       "kept_previous": false,
       "reason": "워크포워드 검증(OOS) 점수 1위",
       "oos_metrics": {
-        "total_return": 1.6694615082214486,
-        "cagr": 0.1445195500252574,
-        "max_drawdown": 0.25971758870700545,
-        "ulcer_index": 0.11342227680100878,
-        "martin": 1.274172535601684,
-        "calmar": 0.556448836387026,
-        "sharpe": 0.7361687977859115,
-        "sortino": 0.6477992602436281,
+        "total_return": 2.6280360634539326,
+        "cagr": 0.19382774935624414,
+        "max_drawdown": 0.25971758870700645,
+        "ulcer_index": 0.1361491376715896,
+        "martin": 1.4236428718614675,
+        "calmar": 0.7463019748535622,
+        "sharpe": 0.8717577542415829,
+        "sortino": 0.8097085627811367,
         "worst_day": -0.09053874551156173,
-        "worst_month": -0.11010129900875887,
+        "worst_month": -0.1346090491036056,
         "days": 2655,
-        "time_in_market": 0.2990583804143126,
-        "trades": 23
+        "time_in_market": 0.344256120527307,
+        "trades": 25
       },
       "baseline_metrics": {
         "total_return": 9.103492595977913,
@@ -95,16 +95,16 @@
     }
   },
   "portfolio_oos": {
-    "total_return": 0.8548593636755477,
-    "cagr": 0.08864540672087906,
-    "max_drawdown": 0.13983061341585834,
-    "ulcer_index": 0.05501460982160426,
-    "martin": 1.6113066512391763,
-    "calmar": 0.6339484935051117,
-    "sharpe": 0.7891662515149112,
-    "sortino": 0.6864559860737593,
-    "worst_day": -0.05624032420530726,
-    "worst_month": -0.07424689865271672,
+    "total_return": 2.5498438631291274,
+    "cagr": 0.19025720718506878,
+    "max_drawdown": 0.2887881983159837,
+    "ulcer_index": 0.14103769872948083,
+    "martin": 1.3489812220347843,
+    "calmar": 0.6588122655098767,
+    "sharpe": 0.9351991022649307,
+    "sortino": 0.9446874067108485,
+    "worst_day": -0.09487825400903133,
+    "worst_month": -0.10776493207139237,
     "days": 2655
   },
   "portfolio_buy_and_hold": {
