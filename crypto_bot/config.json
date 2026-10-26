@@ -27,6 +27,11 @@
     "min_rebalance_fraction": 0.05
   },
 
+  "rotation": {
+    "universe": ["BTC-USD", "ETH-USD", "SOL-USD", "XRP-USD", "DOGE-USD", "LINK-USD", "AVAX-USD", "LTC-USD", "ADA-USD"],
+    "rebalance_days": 7
+  },
+
   "paper": {
     "starting_cash": 10000
   },

@@ -123,3 +123,30 @@ def test_always_on_signal_reenters_after_stop():
     exp = bt.apply_risk(df, st.buy_and_hold(df), bt.RiskParams())
     stops = ((exp.shift(1) > 0) & (exp == 0)).sum()
     assert stops > 0 and (exp.iloc[-500:] > 0).mean() > 0.2
+
+
+def _multi():
+    data = {f"C{i}-USD": synthetic(seed=10 + i) for i in range(4)}
+    data["C3-USD"] = data["C3-USD"].iloc[600:]  # 늦게 상장된 코인
+    return data
+
+
+def test_rotation_no_lookahead_and_limits():
+    from bot import rotation
+    closes = rotation.panel(_multi())
+    W = rotation.momentum_weights(closes, 60, 2, 50, 0.35)
+    part = rotation.momentum_weights(closes.iloc[:1200], 60, 2, 50, 0.35)
+    assert np.allclose(W.iloc[:1200].to_numpy(), part.to_numpy())
+    assert (W.sum(axis=1) <= 1.0 + 1e-9).all() and (W >= 0).all().all()
+    assert (W["C3-USD"].iloc[:650] == 0).all()  # 상장 전에는 못 산다
+    mv = rotation.max_vol_daily_weights(closes)
+    assert (mv.sum(axis=1) <= 1.0).all()
+
+
+def test_rotation_report_runs():
+    from bot import rotation
+    cfg = dict(CFG, rotation={"rebalance_days": 7})
+    data = _multi()
+    data["BTC-USD"], data["ETH-USD"] = synthetic(seed=21), synthetic(seed=22)
+    text, summary = rotation.report(data, cfg)
+    assert "모멘텀 로테이션" in text and set(summary) == set(rotation.NAMES)

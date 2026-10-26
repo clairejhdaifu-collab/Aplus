@@ -3,6 +3,7 @@
   python crypto_bot/run.py learn     # 데이터 갱신 → 워크포워드 학습 → 전략 선택 → 리포트
   python crypto_bot/run.py signal    # 데이터 갱신 → 오늘의 목표 비중 (state/signal.json)
   python crypto_bot/run.py paper     # signal + 모의매매 1회 (state/paper_ledger.json)
+  python crypto_bot/run.py rotation  # 코인 로테이션 연구 백테스트 (reports/rotation_report.md)
   python crypto_bot/run.py rh-plan  --input snapshot.json   # Robinhood 주문 계획 (실행은 Claude 가 MCP 로)
   python crypto_bot/run.py rh-record --input fills.json     # Robinhood 체결 결과를 장부에 기록
 """
@@ -79,6 +80,15 @@ def cmd_paper(cfg):
     print(json.dumps({"plan": plan, "fills": fills, "value_after": round(value, 2)}, indent=2, default=float))
 
 
+def cmd_rotation(cfg):
+    from bot import rotation
+    data = {s: data_mod.update(s, cfg["timeframe"], cfg["history_start"]) for s in cfg["rotation"]["universe"]}
+    text, summary = rotation.report(data, cfg)
+    learn.REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    (learn.REPORT_DIR / "rotation_report.md").write_text(text)
+    print(text)
+
+
 def cmd_rh_plan(cfg, input_path):
     """snapshot = {"holdings": {"BTC-USD": qty}, "prices": {"BTC-USD": px}, "buying_power": 10.0}"""
     snap = json.loads(Path(input_path).read_text())
@@ -101,7 +111,7 @@ def cmd_rh_record(cfg, input_path):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("command", choices=["learn", "signal", "paper", "rh-plan", "rh-record"])
+    ap.add_argument("command", choices=["learn", "signal", "paper", "rotation", "rh-plan", "rh-record"])
     ap.add_argument("--input")
     args = ap.parse_args()
     cfg = load_config()
@@ -111,6 +121,8 @@ def main():
         cmd_signal(cfg)
     elif args.command == "paper":
         cmd_paper(cfg)
+    elif args.command == "rotation":
+        cmd_rotation(cfg)
     elif args.command == "rh-plan":
         cmd_rh_plan(cfg, args.input)
     elif args.command == "rh-record":

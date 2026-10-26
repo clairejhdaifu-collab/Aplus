@@ -68,6 +68,11 @@ jobs:
       - name: 오늘의 신호 + 모의매매
         run: python crypto_bot/run.py paper
 
+      - name: 코인 로테이션 연구 (학습하는 날에만)
+        if: steps.decide.outputs.learn == 'true'
+        continue-on-error: true
+        run: python crypto_bot/run.py rotation
+
       - name: 결과 커밋
         run: |
           git config user.name "crypto-bot"
