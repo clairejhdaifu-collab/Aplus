@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-10-28T01:06:33+00:00",
+  "generated_at": "2026-10-29T01:06:18+00:00",
   "weight_per_symbol": 0.5,
   "symbols": {
     "BTC-USD": {
       "strategy": "ensemble",
       "target_exposure": 0.0,
       "previous_exposure": 0.0,
-      "bar_time": "2026-10-27 00:00:00+00:00",
-      "close": 80799.51
+      "bar_time": "2026-10-28 00:00:00+00:00",
+      "close": 81249.31
     },
     "ETH-USD": {
       "strategy": "donchian_breakout",
       "target_exposure": 0.0,
       "previous_exposure": 0.0,
-      "bar_time": "2026-10-27 00:00:00+00:00",
-      "close": 2347.01
+      "bar_time": "2026-10-28 00:00:00+00:00",
+      "close": 2356.89
     }
   }
 }
