@@ -1,8 +1,23 @@
 {
   "budget": 10,
-  "cash": 10,
+  "cash": 8.33,
   "peak_value": 10,
   "halted": false,
   "created_at": "2026-10-26T07:55:13+00:00",
-  "history": []
+  "history": [
+    {
+      "time": "2026-10-30T01:07:33+00:00",
+      "fills": [
+        {
+          "symbol": "BTC-USD",
+          "side": "buy",
+          "usd": 1.67,
+          "qty": 2.15e-05,
+          "price": 77648.94,
+          "order_id": "6ae3edc9-c350-4fa1-8c40-db79ec1735d3"
+        }
+      ],
+      "value_after": 9.98
+    }
+  ]
 }
