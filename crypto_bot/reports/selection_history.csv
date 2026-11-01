@@ -11,3 +11,5 @@ time,symbol,chosen,score,oos_cagr,oos_max_drawdown,kept_previous
 2026-10-26T08:08:43+00:00,ETH-USD,donchian_breakout,1.0109,0.1609,0.328,False
 2026-10-30T01:17:21+00:00,BTC-USD,ensemble,0.3303,0.059,0.3238,False
 2026-10-30T01:17:21+00:00,ETH-USD,donchian_breakout,1.0084,0.1607,0.328,False
+2026-11-01T01:06:54+00:00,BTC-USD,ensemble,0.3256,0.0582,0.3238,False
+2026-11-01T01:06:54+00:00,ETH-USD,donchian_breakout,1.0072,0.1605,0.328,False
