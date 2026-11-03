@@ -67,6 +67,7 @@ def plan_orders(signal: dict, ledger: dict, holdings: dict[str, float], prices: 
     notes = []
     peak = max(ledger.get("peak_value", value), value)
     drawdown = 1 - value / peak if peak > 0 else 0.0
+    ledger["peak_value"] = round(peak, 2)  # 매매가 없는 날도 신고점을 기억 (킬스위치 기준)
     if not ledger.get("halted") and drawdown >= risk["kill_switch_drawdown"]:
         ledger["halted"] = True
         notes.append(f"킬스위치 발동: 고점 대비 -{drawdown:.1%} → 전량 현금화 후 정지")

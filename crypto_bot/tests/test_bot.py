@@ -150,3 +150,10 @@ def test_rotation_report_runs():
     data["BTC-USD"], data["ETH-USD"] = synthetic(seed=21), synthetic(seed=22)
     text, summary = rotation.report(data, cfg)
     assert "모멘텀 로테이션" in text and set(summary) == set(rotation.NAMES)
+
+
+def test_peak_tracked_without_trades():
+    ledger = ex.load_ledger(Path("/nonexistent"), 100)
+    ledger.update(cash=50.0, peak_value=100)
+    ex.plan_orders(_signal(0.5, 0.0), ledger, {"BTC-USD": 0.001}, {"BTC-USD": 60000, "ETH-USD": 3000}, CFG)
+    assert ledger["peak_value"] == 110
