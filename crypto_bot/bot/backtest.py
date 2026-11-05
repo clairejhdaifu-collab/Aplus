@@ -22,6 +22,8 @@ class RiskParams:
     max_exposure: float = 1.0
     atr_stop_mult: float = 3.0
     min_rebalance_fraction: float = 0.05
+    # 스톱 후 재진입 조건: breakout20 / breakout10 (N일 신고가), sma50 / sma20 (이평선 위), cooldown10 (10일 경과)
+    reentry: str = "breakout20"
 
     @classmethod
     def from_config(cls, cfg: dict) -> "RiskParams":
@@ -31,7 +33,20 @@ class RiskParams:
             max_exposure=r.get("max_exposure", 1.0),
             atr_stop_mult=r.get("atr_stop_mult", 3.0),
             min_rebalance_fraction=r.get("min_rebalance_fraction", 0.05),
+            reentry=r.get("reentry", "breakout20"),
         )
+
+
+def _reentry_ok(df: pd.DataFrame, rule: str) -> np.ndarray:
+    close = df["close"]
+    if rule.startswith("breakout"):
+        _, hi = ind.donchian(df, int(rule[8:]))
+        return (close > hi).to_numpy()
+    if rule.startswith("sma"):
+        return (close > ind.sma(close, int(rule[3:]))).to_numpy()
+    if rule.startswith("cooldown"):
+        return np.zeros(len(df), dtype=bool)
+    raise ValueError(f"unknown reentry rule: {rule}")
 
 
 def apply_risk(df: pd.DataFrame, raw_signal: pd.Series, risk: RiskParams) -> pd.Series:
@@ -46,15 +61,16 @@ def apply_risk(df: pd.DataFrame, raw_signal: pd.Series, risk: RiskParams) -> pd.
     sig = raw_signal.reindex(df.index).fillna(0).to_numpy()
     vol = ind.realized_vol(df["close"], 30, PERIODS_PER_YEAR).to_numpy()
     a = ind.atr(df, 14).to_numpy()
-    _, hi20 = ind.donchian(df, 20)
-    breakout = (df["close"] > hi20).to_numpy()
+    breakout = _reentry_ok(df, risk.reentry)
+    cooldown = int(risk.reentry[8:]) if risk.reentry.startswith("cooldown") else 0
+    stopped_at = -1
 
     out = np.zeros(len(df))
     pos = 0.0
     peak = np.nan
     stopped = False
     for i in range(len(df)):
-        if sig[i] <= 0 or breakout[i]:
+        if sig[i] <= 0 or breakout[i] or (cooldown and stopped and i - stopped_at >= cooldown):
             stopped = False  # 신호가 꺼졌다 켜지거나, 20일 신고가로 추세가 되살아나면 재진입 허용
         if sig[i] <= 0:
             target = 0.0
@@ -72,6 +88,7 @@ def apply_risk(df: pd.DataFrame, raw_signal: pd.Series, risk: RiskParams) -> pd.
             if close[i] < peak - risk.atr_stop_mult * a[i]:
                 target = 0.0
                 stopped = True
+                stopped_at = i
 
         if target == 0.0 or abs(target - pos) >= risk.min_rebalance_fraction:
             if pos == 0.0 and target > 0:
