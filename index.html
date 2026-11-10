@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natural Healing & Acupuncture Clinic</title>
+    <title>A+ Clinic Acupuncture | Acupuncture, Herbal Medicine &amp; Cupping</title>
+    <meta name="description" content="A+ Clinic Acupuncture offers acupuncture, herbal medicine, cupping and natural pain and stress relief. Serving patients since 2017.">
+    <link rel="canonical" href="https://aplushealth.info/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="A+ Clinic Acupuncture">
+    <meta property="og:description" content="Acupuncture, herbal medicine, cupping and natural pain and stress relief.">
+    <meta property="og:url" content="https://aplushealth.info/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -637,19 +643,24 @@
         section {
             animation: fadeIn 0.8s ease;
         }
+
+        .book-actions { text-align: center; }
+        .book-link { display: block; text-align: center; text-decoration: none; margin-bottom: 1rem; }
+        .book-link[hidden], [data-clinic-show][hidden] { display: none; }
+        .book-note { margin-top: 0.5rem; }
+        .info-text a { color: inherit; }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">🌿 Natural Healing</div>
+            <div class="logo">🌿 A+ Clinic Acupuncture</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#appointment">Appointment</a></li>
-                <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -672,11 +683,11 @@
         
         <div class="about-content">
             <div class="about-text">
-                <p>Welcome to our Natural Healing & Acupuncture Clinic, where ancient wisdom meets modern wellness. For over 15 years, we've been dedicated to helping families achieve optimal health through natural, time-tested healing methods.</p>
+                <p>Welcome to A+ Clinic Acupuncture, where ancient wisdom meets modern wellness. Since 2017, we've been dedicated to helping families achieve optimal health through natural, time-tested healing methods.</p>
                 
                 <p>Our clinic offers a warm, welcoming environment where you and your loved ones can experience the profound benefits of holistic medicine. We believe in treating the whole person—body, mind, and spirit—not just the symptoms.</p>
                 
-                <p>Led by certified practitioners with extensive training in traditional Chinese medicine and natural healing modalities, our team is committed to providing personalized care that honors your unique healing journey.</p>
+                <p>Led by a licensed acupuncturist trained in traditional East Asian medicine, our clinic is committed to providing personalized care that honors your unique healing journey.</p>
             </div>
             
             <div class="about-features">
@@ -747,85 +758,11 @@
         <div class="divider"></div>
         <p class="section-subtitle">Take the first step towards natural healing</p>
         
-        <form class="appointment-form" onsubmit="handleAppointment(event)">
-            <div class="form-group">
-                <label for="name">Full Name *</label>
-                <input type="text" id="name" name="name" required placeholder="Your name">
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required placeholder="your@email.com">
-            </div>
-            
-            <div class="form-group">
-                <label for="phone">Phone Number *</label>
-                <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
-            </div>
-            
-            <div class="form-group">
-                <label for="service">Preferred Service *</label>
-                <select id="service" name="service" required>
-                    <option value="">Select a service</option>
-                    <option value="acupuncture">Acupuncture</option>
-                    <option value="herbal">Herbal Medicine</option>
-                    <option value="cupping">Cupping Therapy</option>
-                    <option value="wellness">Wellness Counseling</option>
-                    <option value="pain">Pain Management</option>
-                    <option value="stress">Stress Relief</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="date">Preferred Date</label>
-                <input type="date" id="date" name="date">
-            </div>
-            
-            <div class="form-group">
-                <label for="message">Additional Information</label>
-                <textarea id="message" name="message" placeholder="Tell us about your health concerns or questions..."></textarea>
-            </div>
-            
-            <button type="submit" class="submit-button">REQUEST APPOINTMENT</button>
-        </form>
-    </section>
-
-    <!-- Blog Section -->
-    <section id="blog">
-        <h2 class="section-title">Health & Wellness Blog</h2>
-        <div class="divider"></div>
-        <p class="section-subtitle">Tips and insights for natural living</p>
-        
-        <div class="blog-grid">
-            <article class="blog-card">
-                <div class="blog-image">🌿</div>
-                <div class="blog-content">
-                    <div class="blog-date">January 15, 2026</div>
-                    <h3>5 Benefits of Regular Acupuncture</h3>
-                    <p>Discover how regular acupuncture treatments can improve your overall health, reduce stress, and enhance your body's natural healing abilities.</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </article>
-            
-            <article class="blog-card">
-                <div class="blog-image">🍵</div>
-                <div class="blog-content">
-                    <div class="blog-date">January 8, 2026</div>
-                    <h3>Herbal Teas for Winter Wellness</h3>
-                    <p>Learn about powerful herbal teas that can boost your immune system and keep you healthy during the cold winter months.</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </article>
-            
-            <article class="blog-card">
-                <div class="blog-image">🧘‍♀️</div>
-                <div class="blog-content">
-                    <div class="blog-date">December 28, 2025</div>
-                    <h3>Managing Stress Naturally</h3>
-                    <p>Explore natural techniques and holistic practices to reduce stress and cultivate inner peace in your daily life.</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </article>
+        <div class="appointment-form book-actions">
+            <a class="submit-button book-link" data-clinic-href="booking" hidden>BOOK ONLINE</a>
+            <a class="submit-button book-link" data-clinic-href="tel" hidden>CALL <span data-clinic="phone"></span></a>
+            <a class="submit-button book-link" data-clinic-href="sms" hidden>TEXT US</a>
+            <p class="book-note" data-clinic-show="any-contact" hidden>New patients welcome. Tell us what you would like help with and we will find a time that works.</p>
         </div>
     </section>
 
@@ -839,90 +776,50 @@
             <div class="contact-info">
                 <h3>Visit Us</h3>
                 
-                <div class="info-item">
+                <div class="info-item" data-clinic-show="address" hidden>
                     <div class="info-icon">📍</div>
                     <div class="info-text">
                         <h4>Address</h4>
-                        <p>123 Wellness Avenue<br>Your City, ST 12345</p>
+                        <p><a data-clinic-href="map"><span data-clinic="street"></span><br><span data-clinic="cityLine"></span></a></p>
                     </div>
                 </div>
-                
-                <div class="info-item">
+
+                <div class="info-item" data-clinic-show="phone" hidden>
                     <div class="info-icon">📞</div>
                     <div class="info-text">
                         <h4>Phone</h4>
-                        <p>(555) 123-4567</p>
+                        <p><a data-clinic-href="tel"><span data-clinic="phone"></span></a></p>
                     </div>
                 </div>
-                
-                <div class="info-item">
+
+                <div class="info-item" data-clinic-show="email" hidden>
                     <div class="info-icon">✉️</div>
                     <div class="info-text">
                         <h4>Email</h4>
-                        <p>info@naturalhealingclinic.com</p>
+                        <p><a data-clinic-href="mailto"><span data-clinic="email"></span></a></p>
                     </div>
                 </div>
-                
-                <div class="info-item">
+
+                <div class="info-item" data-clinic-show="hours" hidden>
                     <div class="info-icon">🕒</div>
                     <div class="info-text">
                         <h4>Hours</h4>
-                        <p>Monday - Friday: 9:00 AM - 7:00 PM<br>
-                        Saturday: 10:00 AM - 5:00 PM<br>
-                        Sunday: Closed</p>
+                        <p data-clinic="hours"></p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="insurance-form">
-                <h3>Insurance Verification</h3>
-                <p>Submit your insurance information and we'll verify your coverage within 24 hours.</p>
-                
-                <form onsubmit="handleInsurance(event)">
-                    <div class="form-group">
-                        <label for="patient-name">Patient Name *</label>
-                        <input type="text" id="patient-name" name="patient-name" required placeholder="Full name">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="patient-email">Email *</label>
-                        <input type="email" id="patient-email" name="patient-email" required placeholder="your@email.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="insurance-provider">Insurance Provider *</label>
-                        <input type="text" id="insurance-provider" name="insurance-provider" required placeholder="e.g., Blue Cross, Aetna, United Healthcare">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="policy-number">Policy Number *</label>
-                        <input type="text" id="policy-number" name="policy-number" required placeholder="Your policy number">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="group-number">Group Number</label>
-                        <input type="text" id="group-number" name="group-number" placeholder="If applicable">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="dob">Date of Birth *</label>
-                        <input type="date" id="dob" name="dob" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="notes">Additional Notes</label>
-                        <textarea id="notes" name="notes" placeholder="Any additional information..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-button">SUBMIT FOR VERIFICATION</button>
-                </form>
+                <h3>Insurance</h3>
+                <p>Not sure whether your plan covers acupuncture? Call us with your insurance card in hand and we will check your benefits before your first visit.</p>
+                <a class="submit-button book-link" data-clinic-href="tel" hidden>CALL TO CHECK COVERAGE</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Natural Healing & Acupuncture Clinic. All rights reserved.</p>
+        <p>&copy; 2026 A+ Clinic Acupuncture. All rights reserved.</p>
         <p style="margin-top: 0.5rem; opacity: 0.7;">Embracing nature's wisdom for holistic wellness</p>
     </footer>
 
@@ -941,40 +838,79 @@
             });
         });
 
-        // Handle appointment form submission
-        function handleAppointment(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            
-            // In production, this would send to your email service
-            // For now, we'll show a success message
-            alert('Thank you for your appointment request! We will contact you within 24 hours to confirm your appointment.');
-            
-            // Log data (in production, this would be sent to a server)
-            console.log('Appointment Data:', data);
-            
-            // Reset form
-            event.target.reset();
-        }
+        // ============================================================
+        // CLINIC DETAILS: the only place to edit. Anything left empty
+        // is simply not shown on the page.
+        // ============================================================
+        const CLINIC = {
+            name: 'A+ Clinic Acupuncture',
+            phone: '',        // e.g. '(714) 555-0100'
+            canText: false,   // true if patients may text the number above
+            email: '',
+            street: '',       // e.g. '100 Main St, Suite 1'
+            city: '',
+            state: 'CA',
+            zip: '',
+            bookingUrl: '',   // online booking link, if there is one
+            hours: []         // e.g. ['Tuesday: 9:00 AM - 6:00 PM', 'Friday: 9:00 AM - 6:00 PM']
+        };
 
-        // Handle insurance form submission
-        function handleInsurance(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            
-            // In production, this would send to your email service
-            alert('Thank you! We have received your insurance information. We will verify your coverage and contact you within 24 hours.');
-            
-            // Log data (in production, this would be sent to a server)
-            console.log('Insurance Data:', data);
-            
-            // Reset form
-            event.target.reset();
-        }
+        (function applyClinic() {
+            const c = CLINIC;
+            const digits = c.phone.replace(/\D/g, '');
+            const cityLine = c.city ? `${c.city}, ${c.state} ${c.zip}`.trim() : '';
+            const fullAddress = c.street && cityLine ? `${c.street}, ${cityLine}` : '';
+            const text = { phone: c.phone, email: c.email, street: c.street, cityLine: cityLine };
+            const href = {
+                tel: digits ? `tel:+1${digits.slice(-10)}` : '',
+                sms: digits && c.canText ? `sms:+1${digits.slice(-10)}` : '',
+                mailto: c.email ? `mailto:${c.email}` : '',
+                booking: c.bookingUrl,
+                map: fullAddress ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.name + ' ' + fullAddress)}` : ''
+            };
+            const show = {
+                phone: !!digits, email: !!c.email, address: !!fullAddress,
+                hours: c.hours.length > 0, 'any-contact': !!(digits || c.bookingUrl)
+            };
+
+            document.querySelectorAll('[data-clinic]').forEach(el => {
+                const key = el.dataset.clinic;
+                if (key === 'hours') {
+                    c.hours.forEach((line, i) => {
+                        if (i) el.appendChild(document.createElement('br'));
+                        el.appendChild(document.createTextNode(line));
+                    });
+                } else {
+                    el.textContent = text[key] || '';
+                }
+            });
+            document.querySelectorAll('[data-clinic-href]').forEach(el => {
+                const url = href[el.dataset.clinicHref];
+                if (url) { el.href = url; el.hidden = false; }
+            });
+            document.querySelectorAll('[data-clinic-show]').forEach(el => {
+                el.hidden = !show[el.dataset.clinicShow];
+            });
+
+            // Structured data so Google can show the clinic in local results
+            if (digits && fullAddress) {
+                const ld = document.createElement('script');
+                ld.type = 'application/ld+json';
+                ld.textContent = JSON.stringify({
+                    '@context': 'https://schema.org',
+                    '@type': 'MedicalBusiness',
+                    name: c.name,
+                    url: 'https://aplushealth.info/',
+                    telephone: href.tel.slice(4),
+                    foundingDate: '2017',
+                    address: {
+                        '@type': 'PostalAddress', streetAddress: c.street, addressLocality: c.city,
+                        addressRegion: c.state, postalCode: c.zip, addressCountry: 'US'
+                    }
+                });
+                document.head.appendChild(ld);
+            }
+        })();
 
         // Add scroll animation to sections
         const observerOptions = {
